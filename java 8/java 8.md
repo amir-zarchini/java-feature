@@ -96,3 +96,68 @@ int width=10;
 } 
 ```
 </details>
+
+<div dir="rtl">
+برخلاف متود ها عبارات لامبدا این 3 بخش را ندارند :
+
+1) این عبارات نام ندارند.
+2) Return Type ندارند. جنس خروجی یک لامبدا توسط کامپایلر از جایی که استفاده میشود تشخیص
+   داده میشود. 
+3) نمیتوانند  Type Parameter تعریف کنند ؛ بنابراین lambda expression ها نمیتوانند Generic باشند.
+</div>
+
+| With Lambda                                                           | Without Lambda                                                    |
+|-----------------------------------------------------------------------|-------------------------------------------------------------------|
+| (x , y) -> {return x + y;} <br/> (final int x ,final int y) -> x + y; | int sum(int x , int y) <br/> {return x + y; }                     |
+| str -> str.length()                                                   | int map(String str) <br/> {return str.length(); }                 |
+| () -> { <br/> out.print(LocalDate.now()); <br/> }                     | void printCurrentDate(){<br/> out.print(LocalDate.now()); <br/> } |
+| () -> {}                                                              | void doNothing(){ <br/> // No Code goes here<br/>  }              |
+
+<div dir="rtl">
+چند مثال از lambda expression : 
+</div>
+
+<details>
+<summary>No Parameter</summary>
+
+```java
+interface Sayable{  
+    public String say();  
+}  
+
+public class LambdaExpressionExample3{
+    public static void main(String[] args) {  
+        Sayable s=()->{  
+            return "I have nothing to say.";  
+        };  
+        System.out.println(s.say());  
+    }  
+}  
+```
+</details>
+<details>
+<summary>Single Parameter</summary>
+
+```java
+interface Sayable{
+    public String say(String name);
+}
+
+public class LambdaExpressionExample4{
+    public static void main(String[] args) {
+
+        // Lambda expression with single parameter.  
+        Sayable s1=(name)->{
+            return "Hello, "+name;
+        };
+        System.out.println(s1.say("Sonoo"));
+
+        // You can omit function parentheses    
+        Sayable s2= name ->{
+            return "Hello, "+name;
+        };
+        System.out.println(s2.say("Sonoo"));
+    }
+}  
+```
+</details>
