@@ -1,4 +1,4 @@
-# java 8
+#java 8
 <p dir="rtl">
 ویژگی های جاوا 8 عبارتند از :
 </p>
@@ -145,7 +145,7 @@ interface Sayable{
 
 public class LambdaExpressionExample4{
     public static void main(String[] args) {
-
+        
         // Lambda expression with single parameter.  
         Sayable s1=(name)->{
             return "Hello, "+name;
@@ -159,5 +159,84 @@ public class LambdaExpressionExample4{
         System.out.println(s2.say("Sonoo"));
     }
 }  
+```
+</details>
+
+<details>
+<summary>Multiple Parameter</summary>
+
+```java
+interface Addable{  
+    int add(int a,int b);  
+}
+
+public class LambdaExpressionExample5{  
+    public static void main(String[] args) {
+        
+        // Multiple parameters in lambda expression  
+        Addable ad1=(a,b)->(a+b);  
+        System.out.println(ad1.add(10,20));  
+          
+        // Multiple parameters with data type in lambda expression  
+        Addable ad2=(int a,int b)->(a+b);  
+        System.out.println(ad2.add(100,200));  
+    }  
+} 
+```
+</details>
+<details>
+<summary>Foreach Loop</summary>
+
+```java
+public class LambdaExpressionExample7{  
+    public static void main(String[] args) {  
+          
+        List<String> list=new ArrayList<String>();  
+        list.add("ankit");  
+        list.add("mayank");  
+        list.add("irfan");  
+        list.add("jai");  
+          
+        list.forEach(  
+            (n)->System.out.println(n)  
+        );  
+    }  
+}  
+```
+</details>
+<details>
+<summary>Filter Collection Data</summary>
+
+```java
+class Product{
+   int id;
+   String name;
+   float price;
+   public Product(int id, String name, float price) {
+      super();
+      this.id = id;
+      this.name = name;
+      this.price = price;
+   }
+}
+public class LambdaExpressionExample11{
+   public static void main(String[] args) {
+      List<Product> list=new ArrayList<Product>();
+      list.add(new Product(1,"Samsung A5",17000f));
+      list.add(new Product(3,"Iphone 6S",65000f));
+      list.add(new Product(2,"Sony Xperia",25000f));
+      list.add(new Product(4,"Nokia Lumia",15000f));
+      list.add(new Product(5,"Redmi4 ",26000f));
+      list.add(new Product(6,"Lenevo Vibe",19000f));
+
+      // using lambda to filter data  
+      Stream<Product> filtered_data = list.stream().filter(p -> p.price > 20000);
+
+      // using lambda to iterate through collection  
+      filtered_data.forEach(
+              product -> System.out.println(product.name+": "+product.price)
+      );
+   }
+}    
 ```
 </details>
