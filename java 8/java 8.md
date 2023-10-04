@@ -4,9 +4,9 @@
 </p>
 
 - [Lambda Expressions](#lambda-expressions)
-- Method references,
-- Functional interfaces,
-- Stream API,
+- [Functional Interface](#functional-interface)
+- [Method References](#method-references)
+- [Stream API](#stream-api)
 - Default methods,
 - Base64 Encode Decode,
 - Static methods in interface,
@@ -23,7 +23,7 @@
 
 <div align="center">
 
-# Lambda Expressions
+## Lambda Expressions
 </div>
 
 ---
@@ -240,3 +240,68 @@ public class LambdaExpressionExample11{
 }    
 ```
 </details>
+
+<div align="center">
+
+## Functional Interface
+</div>
+
+---
+
+<div dir="rtl">
+یک functional interface یه interface ای هست که یک متد abstract دارد.
+<br>
+وجود این عناصر در functional interface ها تاثیری ندارد: 
+<li>Default methods</li>
+<li>Static methods</li>
+<li>Public methods inherited from Object class</li>
+</div>
+
+```java
+@FunctionalInterface
+public interface Comparator<T> {
+ int compare(T o1, T o2);
+ boolean equals(Object obj);
+}
+```
+<div dir="rtl">
+
+### FunctionalInterface@
+وجود این annotation موجب میشود که کامپایلر تضمین کند که حتما یک متود abstract در interface
+وجود داشته باشد
+</div>
+
+```java
+@FunctionalInterface
+public interface Appender {
+ String append(String str1, String str2);
+}
+```
+
+<div align="center">
+
+## Method References
+</div>
+
+---
+
+<div dir="rtl">
+method refrence  ها صرفا روشی برای ساده نویسی lambda محسوب میشوند
+<br>
+گرامر آن به شکل زیر میباشد:
+</div>
+
+``` 
+<Qualifier>::<MethodName>
+
+ToIntFunction<String> lengthFunction = str -> str.length();
+ToIntFunction<String> lengthFunction2 = String::length;
+Function<String[],List<String>> asList= Arrays::<String>asList
+```
+
+<div align="center">
+
+## Stream API
+</div>
+
+---
